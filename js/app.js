@@ -16,7 +16,7 @@ const NavItem = ({ className, href, children, logo }) => (
     <li className={`mh2-ns f6 f4-l tc ${className}`}>
         <a className='white no-underline' href={href}>
             {/* Here we check for the logo prop, if we have it we render out our logo otherwise we just render out our regular navigation text children prop */}
-            {logo ? <img src='../images/logo.svg' className='db center logo' /> : children}
+            {logo ? <img src='images/logo.svg' className='db center logo' /> : children}
         </a>
     </li>
 );
@@ -35,7 +35,7 @@ const Attraction = ({ title, description, image, className }) => (
 <div className={className}>
     <h1>{title}</h1>
     <p>{description}</p>
-    <img src={`../images/${image}`} />
+    <img src={`images/${image}`} />
 </div>
 );
 
