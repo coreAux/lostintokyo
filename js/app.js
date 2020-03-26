@@ -24,8 +24,8 @@ const NavItem = ({ className, href, children, logo }) => (
 const Nav = () => (
     <nav className='pt3 pt4-ns mb4 mb0-ns'>
         <ul className='list flex flex-wrap flex-nowrap-ns justify-between items-center pa0 ma0'>
-            {menu.map(item => (
-                <NavItem key={item.children} {...item} />
+            {menu.map((item, index) => (
+                <NavItem key={index} {...item} />
             ))}
         </ul>
     </nav>
@@ -47,8 +47,8 @@ const App = () => (
     </div>
 
     <div className='flex flex-wrap container'>
-        {attractions.map(attraction => (
-            <Attraction key={attraction.title} {...attraction} />
+        {attractions.map((attraction, index) => (
+            <Attraction key={index} {...attraction} />
         ))}
     </div>
 </div>
