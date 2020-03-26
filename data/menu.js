@@ -1,6 +1,6 @@
 const menu = [
   {
-    children: 'Lost in Toyko',
+    children: 'Lost in Tokyo',
     logo: true,
     className: 'order-3-ns w-100 w-30-ns mb3 mb0-ns',
     href: 'index.html'
