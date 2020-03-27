@@ -31,13 +31,70 @@ const Nav = () => (
     </nav>
 );
 
-const Attraction = ({ title, description, image, className }) => (
-<div className={className}>
-    <h1>{title}</h1>
-    <p>{description}</p>
-    <img src={`images/${image}`} />
-</div>
+const Overlay = ({ showInfo, title, description }) => (
+    <div className='absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay' style={{
+        // We do a test to see whether showInfo state is true if it is we change the tranform to be none, otherwise -100%
+        transform: showInfo ? 'none' : 'translateY(-100%)'
+    }}>
+        <div>
+            <h1 className='f4 f3-ns mt0 mb2 regular black normal lh-title'>{title}</h1>
+            <p className='lh-title lh-copy-ns mv0 black f6 measure-l'>{description}</p>
+        </div>
+    </div>
 );
+
+// We can also create components as classes, these give us more advanced functionality and features such as the component lifecycle as well as react's in-built state
+
+class Attraction extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            showInfo: false
+        }
+
+        // Set up our method or else referencing 'this' will not work
+        this.toggleInfo = this.toggleInfo.bind(this)
+        this.closeInfo = this.closeInfo.bind(this)
+    }
+
+    // This is our own method
+    toggleInfo() {
+        this.setState((prevState, showInfo) => {
+            // Here we invest our showInfo boolean by using the previous state and ! exclamation mark
+            return {showInfo: !prevState.showInfo};
+        });
+    }
+
+    closeInfo() {
+        // Here we use setState the usual way because we don't need access to the previous state, we're just force setting the showInfo to be false
+        this.setState({
+            showInfo: false
+        })
+    }
+
+    render()  {
+
+        const { title, description, image, className } = this.props
+
+        const { showInfo } = this.state
+
+        return (
+            <div className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden attraction ${className}`}>
+
+                <div className='relative pointer'
+                onClick={this.toggleInfo}
+                onMouseLeave={this.closeInfo}>
+                    {/*Here we remember to pass along all of our props and state*/}
+                    <Overlay {...this.props} {...this.state} />
+                    <img src={`images/${image}`} />
+                </div>
+            </div>
+        )
+    }
+}
+
+
 
 const App = () => (
 <div>
