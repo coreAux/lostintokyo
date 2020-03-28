@@ -31,13 +31,15 @@ const Nav = () => (
     </nav>
 );
 
-const Overlay = ({ showInfo, title, description }) => (
+const Overlay = ({ showInfo, title, description, link }) => (
     <div className='absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay' style={{
         // We do a test to see whether showInfo state is true if it is we change the tranform to be none, otherwise -100%
         transform: showInfo ? 'none' : 'translateY(-100%)'
     }}>
         <div>
-            <h1 className='f4 f3-ns mt0 mb2 regular black normal lh-title'>{title}</h1>
+            <h1 className='f4 f3-ns mt0 mb2 regular black normal lh-title'>
+            {link ? <a href={link} className='no-underline link hot-pink hover-light-pink' target='_blank'>{title}</a> : title}
+            </h1>
             <p className='lh-title lh-copy-ns mv0 black f6 measure-l'>{description}</p>
         </div>
     </div>
@@ -83,7 +85,7 @@ class Attraction extends React.Component {
             <div className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden attraction ${className}`}>
 
                 <div className='relative pointer'
-                onClick={this.toggleInfo}
+                onMouseEnter={this.toggleInfo}
                 onMouseLeave={this.closeInfo}>
                     {/*Here we remember to pass along all of our props and state*/}
                     <Overlay {...this.props} {...this.state} />

@@ -68,5 +68,12 @@ const attractions = [
     link: 'http://www.ghibli-museum.jp/en/',
     image: 'image_9.jpg',
     className: 'w-third-l ml-auto-l'
+  },
+  {
+    title: 'Big Love Records',
+    description: 'Nestled in a quiet residential backstreet of Harajuku, Big Love is appropriately named considering it’s run by husband and wife duo Masashi Naka and Haruka Hirata.',
+    link: 'http://www.bigloverecords.jp',
+    image: 'image_10.jpg',
+    className: 'w-third-l ml5-l'
   }
 ];
